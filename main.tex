@@ -1,0 +1,100 @@
+\documentclass[11pt]{extarticle}
+
+
+%%%% french character
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+
+%%%% useful package
+\usepackage[left=1.8cm, right=1.8cm, top=1.9cm, bottom=2.4cm]{geometry}
+\usepackage{subcaption} % for figure caption
+\usepackage{graphicx} % image
+\usepackage{tabularx} % table
+\usepackage{capt-of} % caption for table
+\usepackage{longtable} % aligned enumeration
+\usepackage{enumitem} % enumeration
+\usepackage[table]{xcolor} % color in table
+\usepackage{amsmath} % math
+\usepackage{amssymb} % math
+\usepackage[many]{tcolorbox} % colored box
+\usepackage{fancyhdr} % headers
+\usepackage[colorlinks=true,linkcolor= Prune,citecolor=black,filecolor=black,urlcolor=Prune]{hyperref} % for link
+\usepackage{wrapfig} % to wrap text around figures
+% \usepackage{siunitx} % for pretty numbers
+\usepackage{gensymb}
+\usepackage{chemist}
+\usepackage{physics}
+\input{insbox}
+
+%%%% package set-up
+\usetikzlibrary{calc, positioning} % for coordinate calculation and text alignement
+\captionsetup{font=small}
+
+
+%%%% settings
+\setlength{\parskip}{0cm}
+\setlength{\parindent}{0.8cm}
+\renewcommand{\baselinestretch}{1}
+
+
+%%%% small macros
+\newcommand*{\hham}{\hat{\mathcal{H}}}
+\newcommand{\unit}[1]{\; \mathrm {#1}}
+\newcommand{\ex}{\mathrm {e}}
+%\newcommand{\deriv}{\mathrm {d}}
+\newcommand{\boltz}{k_{\mathrm{B}}}
+\newcommand{\timeD}[1]{\frac{\deriv #1}{\deriv t}}
+\newcommand{\partialD}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\vect}[1]{\mathbf {\mathcal {#1}}}
+\newcommand{\horizontalLine}{\rule{\linewidth}{0.5mm}}
+\newcommand{\emptyFrac}{\phantom{\frac{1}{1}}}
+\newcommand{\Ihm}{\mathrm{I}_{\mathrm{h}}}
+\newcommand{\Ih}{$\mathrm{I}_{\mathrm{h}}\;$}
+\newcommand{\Ic}{$\mathrm{I}_{\mathrm{c}}\;$}
+\newcommand{\It}{$\mathrm{I}_{\mathrm{t}}\;$}
+\newcommand{\Isd}{$\mathrm{I}_{\mathrm{sd}}\;$}
+\newcommand{\noSpaceIh}{$\mathrm{I}_{\mathrm{h}}$}
+\newcommand{\noSpaceIc}{$\mathrm{I}_{\mathrm{c}}$}
+\newcommand{\noSpaceIt}{$\mathrm{I}_{\mathrm{t}}$}
+\newcommand{\Nhex}{N_{\mathrm{hex}}}
+\newcommand{\Ncub}{N_{\mathrm{cub}}}
+
+
+\newcommand{\PhDTitle}{\'{E}tude par Résonance Magnétique Nucléaire du magnétisme quantique dans les composés kagomé barlowite et claringbullite substitués au zinc} 
+
+%%%% color
+\definecolor{lightgray}{gray}{0.7}
+\definecolor{purple}{rgb}{0.58,0,0.82}
+\definecolor{darkcyan}{rgb}{0.0, 0.55, 0.50}
+\definecolor{darkgreen}{rgb}{0.0, 0.45, 0.20}
+\definecolor{Prune}{RGB}{99,0,60} % l14-33 
+
+%%%% bigger macros
+\input{macros}
+
+
+%%%% document
+\begin{document}
+\begin{center}
+    \textbf {\Large Mise en perspective didactique d’un dossier de recherche} \\
+    \vspace{0.2cm}
+    \textbf{Brendan Le Pennec} \\
+    \vspace{0.2cm}
+    Concours externe spécial de l’agrégation de physique-chimie option physique \\
+    Session 2023
+  \end{center}
+
+  \input{Parcours}
+  
+  \input{Motivation}
+  \vspace{2mm}
+  
+  \input{Recherche}
+  \vspace{2mm}
+  
+  \input{Conclusion}
+  
+  %\input{monitorat}
+\end{document}

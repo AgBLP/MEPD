@@ -1,0 +1,143 @@
+%%%% header
+% \pagestyle{fancy}
+% \lhead { % left header
+%   \textbf{\footnotesize \'Ecole normale supérieure}
+%   \newline
+%   \footnotesize Préparation à l'agrégation de physique-chimie option physique
+% }
+% \chead{ % central header
+% }
+% \rhead{ % right header
+%   \hfill \textbf{\footnotesize Compte-rendu de leçon de chimie}
+%   \newline \hfill
+%   \footnotesize 2021-2022
+% }
+% \renewcommand{\headrulewidth}{0.4pt}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% blocks for higlight
+\newenvironment{highlightBlock}[1]{%
+  \begin{tcolorbox}
+  [
+    breakable, enhanced jigsaw, % to break box over page
+    arc = 4mm, % curvature
+    title = \textbf{#1}, % title
+    coltitle = white, % title font color
+    colbacktitle = Prune, % light-gray title
+    colback = white, % white background
+    colframe = Prune % dark frame
+  ]
+}
+{
+  \end{tcolorbox}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% ball of colour with text
+\newcommand\ballText[2]{%
+  \shorthandoff{;}
+  \tikz \node[fill, circle, color=#2,
+              inner sep=0pt, text width=20pt,
+              font=\footnotesize, align=center]
+        {\textbf{\color{white} #1}};
+  \shorthandon{;}
+}
+\newcommand\cyanBallText[1]{\ballText{#1}{Prune}}
+
+%%%% rectangle of colour with text
+\newcommand\rectText[3]{%
+  \begin{tcolorbox}
+  [
+    arc = 1mm, % curvature
+    colback = #3, % box color
+    colframe = #3, % box color,
+    width = 48pt,
+    height = 18pt,
+    %bean arc,
+    halign = center,
+    valign = center,
+    after
+  ]
+    \textcolor {#2} {\textbf{#1}}
+  \end{tcolorbox}
+}
+\newcommand\cyanRectText[1]{\rectText{#1}{white}{Prune}}
+
+%%%% rectangle of colour
+\newcommand\rect[3]{%
+  \shorthandoff{;}
+  \tikz \node (rect) [draw, fill, color=#1,
+              minimum width=#2,
+              minimum height=#3] {};
+  \shorthandon{;}
+}
+\newcommand\cyanRect[2]{\rect{Prune}{#1}{#2}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% cv entry
+\newcommand{\cvEntry}[2]{
+  \noindent
+  \rect{#1}{80pt}{2pt}
+  \textcolor{#1} {
+    \textsc {\textbf {#2}}
+  }
+}
+%%%% paragraph
+\newcommand{\sectionPara}[2]{
+  \vspace{10pt}
+  \noindent
+  \rect{#1}{50pt}{2pt}
+  \textbf {#2}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% For aligned enumeration (cv entry)
+\newenvironment{alignedColumn}{%
+  \begin{longtable} { l p{0.8\textwidth} }
+}
+{
+  \end{longtable}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Section
+\newcommand{\boxSection}[1]{%
+  \refstepcounter{section}
+  % number and text
+  \cyanRectText{
+    \textbf {\large \arabic{section}}
+  }
+  
+  \vspace{-18pt}
+  \hspace{-16pt}
+  \textbf{\Large \phantom{right} #1}
+  
+  % subsection counter update
+  \setcounter{subsection}{0}
+  \addcontentsline{toc}{section}{\protect\numberline{} #1}
+}%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Background image
+%%%% (1,2): position ; 
+%%%% 3: width ; 
+%%%% 4: image_name ;
+%%%% 5: caption ;
+\newcommand{\backgroundImage}[5]{% 
+  \begin{tikzpicture}[remember picture, overlay] 
+    \node[anchor = north west, inner sep = 0pt] (image)
+    at ($ (current page.north west) + (#1 mm, -#2 mm) $) {
+      \includegraphics[width=#3] {#4}
+    };
+    \node[text width=#3, align = center, below = of image] {
+      #5
+    };
+  \end{tikzpicture}
+}
